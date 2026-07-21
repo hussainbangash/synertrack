@@ -6,9 +6,16 @@ import { defineConfig } from "prisma/config";
 // Migrations (and the CLI in general) should use a DIRECT database connection —
 // DDL and advisory locks don't behave well through a transaction pooler like
 // PgBouncer / Neon's `-pooler` endpoint. Runtime queries use DATABASE_URL (which
-// may be pooled) via the driver adapter in src/lib/prisma.ts; migrations prefer
-// DIRECT_URL and fall back to DATABASE_URL when they're the same connection.
-const migrationUrl = process.env.DIRECT_URL || process.env.DATABASE_URL || "";
+// may be pooled) via the driver adapter in src/lib/prisma.ts; migrations prefer a
+// direct URL. On Vercel's Neon integration the direct connection is exposed as
+// DATABASE_URL_UNPOOLED / POSTGRES_URL_NON_POOLING, so fall back to those before
+// finally using DATABASE_URL when they're the same connection.
+const migrationUrl =
+  process.env.DIRECT_URL ||
+  process.env.DATABASE_URL_UNPOOLED ||
+  process.env.POSTGRES_URL_NON_POOLING ||
+  process.env.DATABASE_URL ||
+  "";
 
 export default defineConfig({
   schema: "prisma/schema.prisma",
