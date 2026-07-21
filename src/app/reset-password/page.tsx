@@ -1,0 +1,11 @@
+import { ResetPasswordForm } from "./reset-password-form";
+
+export default async function ResetPasswordPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ token?: string | string[] }>;
+}) {
+  const { token } = await searchParams;
+  const value = Array.isArray(token) ? token[0] : token;
+  return <ResetPasswordForm token={value ?? ""} />;
+}
