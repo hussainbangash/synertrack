@@ -1,6 +1,6 @@
 # Deploying to Vercel + Neon (free tier)
 
-A step-by-step guide to put this template live on **Vercel** (Next.js host) with a
+A step-by-step guide to put Synertrack live on **Vercel** (Next.js host) with a
 **Neon** serverless PostgreSQL database. Both have free tiers that are enough for a demo.
 
 > **Migrations run automatically on every deploy** — `vercel.json`'s build command runs
@@ -33,14 +33,14 @@ A step-by-step guide to put this template live on **Vercel** (Next.js host) with
 4. Click **Deploy**. The build applies any pending migrations, so your tables are
    created/updated automatically.
 
-## 3. Seed demo users (once)
+## 3. Seed demo data (once)
 
 The build migrates the schema but does **not** seed data (the seed is guarded against
-production and creates known-password demo accounts). Create the demo users once from
-your machine:
+production and wipes tables + creates known-password demo accounts). Load the demo data
+— users, projects, tasks, time logs, and a pending timesheet — once from your machine:
 
 ```powershell
-cd path\to\RBAC-Starter
+cd path\to\synertrack
 npm install
 $env:DATABASE_URL = "postgresql://USER:PASSWORD@ep-xxx.neon.tech/neondb?sslmode=require"
 npx prisma generate
