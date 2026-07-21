@@ -22,7 +22,7 @@ export default async function LoginPage({
       <section className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
         <div className="mb-8">
           <p className="text-sm font-medium text-slate-500">
-            SaaS RBAC Starter
+            Synertrack
           </p>
           <h1 className="mt-2 text-3xl font-bold text-slate-900">
             Sign in to your account

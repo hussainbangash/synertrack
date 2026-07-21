@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "SaaS RBAC Starter",
+  title: "Synertrack",
   description:
-    "A reusable Next.js SaaS starter with authentication and role-based access control.",
+    "Team time tracking with projects, live timers, timesheets, and manager approvals.",
 };
 
 export default function RootLayout({
