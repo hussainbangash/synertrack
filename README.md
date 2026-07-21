@@ -6,7 +6,9 @@
 submit weekly timesheets for approval, and see where the time goes on a dashboard —
 with server-side role-based access control throughout.
 
-<!-- LIVE_DEMO -->
+**▶ Live demo: [synertrack.vercel.app](https://synertrack.vercel.app)** — sign in with
+one click as **Admin**, **Manager**, or **Member** (buttons on the login screen; all use
+password `password123`).
 
 ## Features
 
