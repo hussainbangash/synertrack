@@ -5,6 +5,8 @@ import {
   requireUser,
   roleLabels,
 } from "@/lib/permissions/roles";
+import { prisma } from "@/lib/prisma";
+import { TimerBar } from "./timer/timer-bar";
 import Link from "next/link";
 
 export default async function DashboardLayout({
@@ -18,16 +20,52 @@ export default async function DashboardLayout({
     canAccess(user.role, route.allowedRoles)
   );
 
+  const canManage = user.role === "ADMIN" || user.role === "MANAGER";
+  const [timerProjects, active] = await Promise.all([
+    prisma.project.findMany({
+      where: {
+        status: "ACTIVE",
+        ...(canManage ? {} : { members: { some: { userId: user.id } } }),
+      },
+      orderBy: { name: "asc" },
+      select: {
+        id: true,
+        name: true,
+        tasks: {
+          where: { status: { not: "DONE" } },
+          orderBy: { createdAt: "desc" },
+          select: { id: true, title: true },
+        },
+      },
+    }),
+    prisma.timeLog.findFirst({
+      where: { userId: user.id, endTime: null },
+      select: {
+        startTime: true,
+        project: { select: { name: true } },
+        task: { select: { title: true } },
+      },
+    }),
+  ]);
+
+  const activeTimer = active
+    ? {
+        projectName: active.project.name,
+        taskTitle: active.task?.title ?? null,
+        startTimeISO: active.startTime.toISOString(),
+      }
+    : null;
+
   return (
     <div className="min-h-screen bg-slate-100">
       <div className="grid min-h-screen lg:grid-cols-[260px_1fr]">
         <aside className="border-r border-slate-200 bg-white">
           <div className="border-b border-slate-200 px-6 py-5">
             <p className="text-sm font-medium text-slate-500">
-              SaaS Admin
+              Synertrack
             </p>
             <h1 className="mt-1 text-xl font-bold text-slate-900">
-              RBAC Dashboard
+              Time &amp; Productivity
             </h1>
           </div>
 
@@ -85,7 +123,10 @@ export default async function DashboardLayout({
             </div>
           </header>
 
-          <main className="px-6 py-8">{children}</main>
+          <div className="px-6 pt-6">
+            <TimerBar active={activeTimer} projects={timerProjects} />
+          </div>
+          <main className="px-6 py-6">{children}</main>
         </div>
       </div>
     </div>

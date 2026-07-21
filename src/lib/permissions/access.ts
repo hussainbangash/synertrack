@@ -20,6 +20,11 @@ export const dashboardRoutes = [
     allowedRoles: ["ADMIN", "MANAGER", "USER"] as AppRole[],
   },
   {
+    label: "Timer",
+    href: "/dashboard/timer",
+    allowedRoles: ["ADMIN", "MANAGER", "USER"] as AppRole[],
+  },
+  {
     label: "Users",
     href: "/dashboard/users",
     allowedRoles: ["ADMIN"] as AppRole[],
