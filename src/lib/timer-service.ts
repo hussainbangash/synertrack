@@ -39,19 +39,23 @@ export function getRunningTimer(userId: string): Promise<RunningTimer | null> {
   });
 }
 
-/** Close any running timer for the user. `endOverride` trims idle time on stop. */
-export async function stopRunningTimer(userId: string, endOverride?: Date) {
+/**
+ * Close any running timer for the user. `idleSeconds` (tracked by the desktop app)
+ * is subtracted from the worked duration and recorded, while endTime stays the real
+ * stop time — so `durationSeconds` is net work and the idle split is preserved.
+ */
+export async function stopRunningTimer(userId: string, idleSeconds = 0) {
   const active = await prisma.timeLog.findFirst({
     where: { userId, endTime: null },
     select: { id: true, startTime: true },
   });
   if (!active) return null;
-  // Never let an override predate the start.
-  const end =
-    endOverride && endOverride.getTime() > active.startTime.getTime() ? endOverride : new Date();
+  const end = new Date();
+  const gross = durationBetween(active.startTime, end);
+  const idle = Math.min(Math.max(0, Math.round(idleSeconds)), gross); // clamp to [0, gross]
   return prisma.timeLog.update({
     where: { id: active.id },
-    data: { endTime: end, durationSeconds: durationBetween(active.startTime, end) },
+    data: { endTime: end, durationSeconds: gross - idle, idleSeconds: idle },
   });
 }
 

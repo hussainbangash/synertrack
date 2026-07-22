@@ -24,12 +24,12 @@ export async function POST(request: Request) {
   const parsed = stopSchema.safeParse(body ?? {});
   const idleSeconds = parsed.success ? parsed.data.idleSeconds ?? 0 : 0;
 
-  const endOverride = idleSeconds > 0 ? new Date(Date.now() - idleSeconds * 1000) : undefined;
-  const stopped = await stopRunningTimer(auth.id, endOverride);
+  const stopped = await stopRunningTimer(auth.id, idleSeconds);
 
   return apiJson({
     stopped: Boolean(stopped),
     durationSeconds: stopped?.durationSeconds ?? null,
+    idleSeconds: stopped?.idleSeconds ?? null,
     serverTime: new Date().toISOString(),
   });
 }

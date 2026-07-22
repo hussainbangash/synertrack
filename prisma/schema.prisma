@@ -253,6 +253,7 @@ model TimeLog {
   startTime       DateTime
   endTime         DateTime?
   durationSeconds Int?
+  idleSeconds     Int           @default(0)
   notes           String?
   source          TimeLogSource @default(TIMER)
   timesheetId     String?
