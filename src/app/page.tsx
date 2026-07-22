@@ -95,11 +95,12 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        {/* Layered background: base gradient, faded dot-grid, soft mesh orbs */}
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-emerald-100 via-emerald-50/40 to-white" />
+        {/* Soft emerald->teal hero field, fading to white at the bottom */}
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-br from-emerald-100 via-emerald-50 to-teal-50" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 -z-10 h-48 bg-gradient-to-b from-transparent to-white" />
         <div className="pointer-events-none absolute inset-0 -z-10 bg-dot-grid" />
-        <div className="pointer-events-none absolute -top-24 left-[10%] -z-10 h-80 w-80 rounded-full bg-emerald-400/40 blur-3xl" />
-        <div className="pointer-events-none absolute -top-16 right-[8%] -z-10 h-80 w-[30rem] rounded-full bg-teal-300/45 blur-3xl" />
+        <div className="pointer-events-none absolute -top-24 left-[8%] -z-10 h-80 w-80 rounded-full bg-emerald-300/50 blur-3xl" />
+        <div className="pointer-events-none absolute -top-10 right-[6%] -z-10 h-80 w-[32rem] rounded-full bg-teal-300/45 blur-3xl" />
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:py-24">
           <div className="fade-up">
             <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
