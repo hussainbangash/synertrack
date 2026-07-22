@@ -95,13 +95,16 @@ export default function LandingPage() {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-emerald-50 via-white to-white" />
-        <div className="pointer-events-none absolute -top-24 left-1/2 -z-10 h-72 w-[46rem] -translate-x-1/2 rounded-full bg-emerald-200/40 blur-3xl" />
+        {/* Layered background: base gradient, faded dot-grid, soft mesh orbs */}
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-b from-emerald-50/80 via-white to-white" />
+        <div className="pointer-events-none absolute inset-0 -z-10 bg-dot-grid" />
+        <div className="pointer-events-none absolute -top-28 left-[15%] -z-10 h-72 w-72 rounded-full bg-emerald-300/30 blur-3xl" />
+        <div className="pointer-events-none absolute -top-16 right-[12%] -z-10 h-72 w-96 rounded-full bg-teal-200/30 blur-3xl" />
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:py-24">
           <div className="fade-up">
             <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               Time tracking your team will{" "}
-              <span className="text-emerald-600">actually use</span>
+              <span className="text-gradient">actually use</span>
             </h1>
             <p className="mt-5 max-w-xl text-lg text-slate-600">
               Projects, a live timer, weekly timesheets with manager approvals, and dashboards -
