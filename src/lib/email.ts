@@ -2,7 +2,7 @@
  * Minimal, pluggable email sender.
  *
  * If `RESEND_API_KEY` is set, emails are sent via the Resend HTTP API (no extra
- * dependency — just `fetch`). Otherwise the message is logged to the server
+ * dependency - just `fetch`). Otherwise the message is logged to the server
  * console, so the password-reset flow works out of the box in development and
  * on hosts without an email provider configured (grab the link from the logs).
  */
@@ -20,7 +20,7 @@ async function send({ to, subject, html, text }: SendArgs): Promise<void> {
 
   if (!apiKey) {
     console.log(
-      `\n[email:console-fallback] No RESEND_API_KEY set — logging instead of sending.\n` +
+      `\n[email:console-fallback] No RESEND_API_KEY set - logging instead of sending.\n` +
         `To: ${to}\nSubject: ${subject}\n${text}\n`
     );
     return;

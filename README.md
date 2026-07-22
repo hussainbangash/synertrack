@@ -3,38 +3,38 @@
 [![CI](https://github.com/hussainbangash/synertrack/actions/workflows/ci.yml/badge.svg)](https://github.com/hussainbangash/synertrack/actions/workflows/ci.yml)
 
 **Team time tracking & productivity.** Log work against projects with a live timer,
-submit weekly timesheets for approval, and see where the time goes on a dashboard —
+submit weekly timesheets for approval, and see where the time goes on a dashboard -
 with server-side role-based access control throughout.
 
-**▶ Live demo: [synertrack.vercel.app](https://synertrack.vercel.app)** — sign in with
+**▶ Live demo: [synertrack.vercel.app](https://synertrack.vercel.app)** - sign in with
 one click as **Admin**, **Manager**, or **Member** (buttons on the login screen; all use
 password `password123`).
 
 ## Features
 
-- **Projects & tasks** — organize work into projects (client, colour, budget hours)
+- **Projects & tasks** - organize work into projects (client, colour, budget hours)
   with per-project membership and tasks (estimate, assignee, status).
-- **Live timer** — one running timer at a time, ticking in the header from any page;
+- **Live timer** - one running timer at a time, ticking in the header from any page;
   start/stop or add manual entries.
-- **Timesheets & approval** — weekly (Monday-start) periods; submitting locks the
+- **Timesheets & approval** - weekly (Monday-start) periods; submitting locks the
   week's entries, managers approve or reject with a reason, rejection unlocks. You
   can't approve your own.
-- **Dashboard** — hours this week vs a weekly target, hours today, a 7-day bar chart,
+- **Dashboard** - hours this week vs a weekly target, hours today, a 7-day bar chart,
   and this week's split by project.
-- **Team view** *(manager/admin)* — who's tracking right now (live) and everyone's
+- **Team view** *(manager/admin)* - who's tracking right now (live) and everyone's
   hours since Monday.
-- **Reports** *(manager/admin)* — this month's team hours by project and by member.
-- **Auth & RBAC** — credentials + Google OAuth, JWT sessions re-checked against the DB
+- **Reports** *(manager/admin)* - this month's team hours by project and by member.
+- **Auth & RBAC** - credentials + Google OAuth, JWT sessions re-checked against the DB
   on every request, and role gates enforced on the server (not just the UI).
-- **Desktop companion** — a lightweight Electron tray timer
+- **Desktop companion** - a lightweight Electron tray timer
   ([synertrack-desktop](https://github.com/hussainbangash/synertrack-desktop)) that starts/stops
   from the system tray and syncs to the same account over a token-authenticated API.
 
 ## Roles
 
-- **Admin** — manages users, projects, and sees everything.
-- **Manager** — approves timesheets, sees the team view and reports.
-- **Member** — tracks their own time and submits timesheets.
+- **Admin** - manages users, projects, and sees everything.
+- **Manager** - approves timesheets, sees the team view and reports.
+- **Member** - tracks their own time and submits timesheets.
 
 ## How it works (the loop)
 

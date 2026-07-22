@@ -1,6 +1,6 @@
 # Design decisions
 
-Short notes on *why* this starter is built the way it is — the reasoning behind the
+Short notes on *why* this starter is built the way it is - the reasoning behind the
 non-obvious choices, and the trade-offs each one makes.
 
 ## 1. RBAC is enforced on the server, always
@@ -9,7 +9,7 @@ non-obvious choices, and the trade-offs each one makes.
 before reading or writing data. The sidebar hiding links you can't use is *cosmetic only*.
 
 **Why:** UI-level checks are trivially bypassed (edit the DOM, hit the URL directly, call the
-server action). Authorization has to live where the data access happens — the server.
+server action). Authorization has to live where the data access happens - the server.
 
 **Trade-off:** A little repetition (each page/action re-declares its guard), traded for the
 guarantee that there's no unprotected path.
@@ -19,7 +19,7 @@ guarantee that there's no unprotected path.
 **Decision:** Sessions are stateless JWTs, but `requireUser()` re-reads the user from the
 database on every request (and the `jwt` callback refreshes the role).
 
-**Why:** Pure JWT is fast but *stale* — if you delete a user or demote them, their existing
+**Why:** Pure JWT is fast but *stale* - if you delete a user or demote them, their existing
 token still works until it expires (up to 30 days by default). Pure database sessions are
 always fresh but add a lookup + write to every request and are more moving parts. The hybrid
 keeps JWT's simplicity while making **deletions and role changes take effect on the next
@@ -71,12 +71,12 @@ link is logged so the flow works with zero setup.
 
 **Why:** The classic outage is shipping code that expects a column the database doesn't have
 yet. Running migrations *as part of the build* means new code never serves against an
-un-migrated schema — and if a migration fails, the build fails and the bad code never ships.
+un-migrated schema - and if a migration fails, the build fails and the bad code never ships.
 Migrations use a **direct** connection (`DIRECT_URL`), since DDL and advisory locks misbehave
 through a connection pooler.
 
 ## 8. Tests + CI as a gate
 
 Unit tests cover the permission matrix, the server-action guards, the rate limiter, and the
-reset-token logic. CI runs typecheck, lint, tests, and a production build on every push/PR —
+reset-token logic. CI runs typecheck, lint, tests, and a production build on every push/PR -
 so a regression in any of the above breaks the pipeline before it reaches `main`.

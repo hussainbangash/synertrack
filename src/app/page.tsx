@@ -28,7 +28,7 @@ const FEATURES: { icon: string; title: string; body: string }[] = [
   {
     icon: "🖥️",
     title: "Desktop app",
-    body: "A Windows tray timer with a global hotkey and automatic idle detection — idle time is subtracted from your total.",
+    body: "A Windows tray timer with a global hotkey and automatic idle detection - idle time is subtracted from your total.",
   },
   {
     icon: "🔐",
@@ -71,7 +71,7 @@ export default function LandingPage() {
           Time tracking your team will actually use
         </h1>
         <p className="mx-auto mt-5 max-w-2xl text-lg text-slate-600">
-          Projects, a live timer, weekly timesheets with manager approvals, and dashboards — plus a
+          Projects, a live timer, weekly timesheets with manager approvals, and dashboards - plus a
           desktop tray app that detects idle time and syncs automatically.
         </p>
         <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
@@ -89,7 +89,7 @@ export default function LandingPage() {
           </a>
         </div>
         <p className="mt-4 text-xs text-slate-500">
-          One-click demo accounts (Admin / Manager / Member) on the sign-in page — no signup.
+          One-click demo accounts (Admin / Manager / Member) on the sign-in page - no signup.
         </p>
       </section>
 
@@ -115,7 +115,7 @@ export default function LandingPage() {
       <footer className="border-t border-slate-200">
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-sm text-slate-500">
           <p>
-            Synertrack — a portfolio project by Muhammad Hussain Bangash. Built with Next.js,
+            Synertrack - a portfolio project by Muhammad Hussain Bangash. Built with Next.js,
             Prisma, PostgreSQL &amp; Electron.
           </p>
           <div className="flex items-center gap-4">

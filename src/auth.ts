@@ -15,7 +15,7 @@ export const BCRYPT_COST = 12;
 const DUMMY_HASH = bcrypt.hashSync("unused-dummy-password", BCRYPT_COST);
 
 // Google sign-in is enabled only when its credentials are configured, so the app
-// runs fine without them (the "Sign in with Google" button is hidden otherwise —
+// runs fine without them (the "Sign in with Google" button is hidden otherwise -
 // see the login page). Auth.js reads AUTH_GOOGLE_ID / AUTH_GOOGLE_SECRET.
 export const googleEnabled = Boolean(
   process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET

@@ -15,7 +15,7 @@ function pickInstaller(assets: ReleaseAsset[]): ReleaseAsset | undefined {
 }
 
 /**
- * "Get the desktop app" — reads the latest GitHub release (cached hourly, so new
+ * "Get the desktop app" - reads the latest GitHub release (cached hourly, so new
  * releases appear automatically). `compact` renders a slim one-line banner for
  * busy pages; the default is the full card.
  */
@@ -57,7 +57,7 @@ export async function DesktopDownload({ compact = false }: { compact?: boolean }
     <section className="rounded-2xl bg-white p-6 shadow-sm">
       <h3 className="text-lg font-semibold text-slate-900">Get the desktop app</h3>
       <p className="mt-1 text-sm text-slate-600">
-        A tray timer for Windows that syncs with your account — start/stop from the tray,
+        A tray timer for Windows that syncs with your account - start/stop from the tray,
         automatic idle detection, and an always-on-top mini timer.
       </p>
 

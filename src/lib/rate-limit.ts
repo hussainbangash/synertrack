@@ -3,7 +3,7 @@
  *
  * This has NO external dependencies and is good enough for a single instance
  * (local dev, a single container). For multi-instance / serverless production
- * deployments the in-memory Map is not shared across instances — swap this for a
+ * deployments the in-memory Map is not shared across instances - swap this for a
  * distributed store such as Upstash Redis (`@upstash/ratelimit`) and keep the
  * same `rateLimit()` signature.
  */

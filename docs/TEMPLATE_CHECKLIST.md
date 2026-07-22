@@ -18,7 +18,7 @@ Use this checklist when turning a copied repository into a real SaaS app.
 
 Already handled by the template:
 
-- Login rate limiting (`src/lib/rate-limit.ts`) — swap the in-memory store for
+- Login rate limiting (`src/lib/rate-limit.ts`) - swap the in-memory store for
   Upstash Redis if you run more than one instance.
 - Live role/deletion checks in `requireUser()` and the JWT callback.
 - Security headers in `next.config.ts` (add a tuned CSP).

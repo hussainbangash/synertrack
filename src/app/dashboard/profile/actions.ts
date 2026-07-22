@@ -30,7 +30,7 @@ export async function createDesktopToken(
   await prisma.apiToken.create({ data: { userId: user.id, name, tokenHash } });
 
   revalidatePath("/dashboard/profile");
-  return { status: "success", message: "Token created — copy it now, it won't be shown again.", token };
+  return { status: "success", message: "Token created - copy it now, it won't be shown again.", token };
 }
 
 const revokeSchema = z.object({ tokenId: z.string().min(1) });

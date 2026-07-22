@@ -14,7 +14,7 @@ const stopSchema = z.object({
   idleSeconds: z.coerce.number().int().min(0).max(86400).optional(),
 });
 
-// POST /api/desktop/timer/stop — stop the running timer. When idleSeconds is
+// POST /api/desktop/timer/stop - stop the running timer. When idleSeconds is
 // given (idle discarded), the entry ends that many seconds before now.
 export async function POST(request: Request) {
   const auth = await requireApiUser(request);

@@ -47,7 +47,7 @@ export async function resetPassword(
   const passwordHash = await bcrypt.hash(password, BCRYPT_COST);
 
   // Update the password, stamp passwordChangedAt (invalidates existing sessions),
-  // and consume the token — atomically.
+  // and consume the token - atomically.
   await prisma.$transaction([
     prisma.user.update({
       where: { id: record.userId },

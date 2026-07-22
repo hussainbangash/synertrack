@@ -187,7 +187,7 @@ model Report {
 }
 
 // ---------------------------------------------------------------------------
-// Synertrack — time tracking domain
+// Synertrack - time tracking domain
 // ---------------------------------------------------------------------------
 
 model Project {

@@ -28,7 +28,7 @@ function CopyField({ label, value }: { label: string; value: string }) {
               setCopied(true);
               setTimeout(() => setCopied(false), 1500);
             } catch {
-              /* clipboard blocked — user can select manually */
+              /* clipboard blocked - user can select manually */
             }
           }}
           className="shrink-0 rounded-lg border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-50"
@@ -78,7 +78,7 @@ export function DesktopTokens({ tokens, appUrl }: { tokens: TokenRow[]; appUrl: 
       {state.status === "success" && state.token ? (
         <div className="mt-4 space-y-3 rounded-xl border border-amber-200 bg-amber-50 p-4">
           <p className="text-sm font-medium text-amber-800">
-            Copy these into the desktop app now — the token is shown only once.
+            Copy these into the desktop app now - the token is shown only once.
           </p>
           <CopyField label="Server URL" value={appUrl} />
           <CopyField label="Access token" value={state.token} />

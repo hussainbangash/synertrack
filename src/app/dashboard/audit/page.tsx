@@ -57,7 +57,7 @@ export default async function AuditPage({ searchParams }: { searchParams: Search
         <p className="text-sm font-medium text-slate-500">Admin only</p>
         <h2 className="mt-1 text-3xl font-bold text-slate-900">Audit Log</h2>
         <p className="mt-2 text-sm text-slate-600">
-          Every recorded action across the system, newest first — {total} entr
+          Every recorded action across the system, newest first - {total} entr
           {total === 1 ? "y" : "ies"}.
         </p>
       </section>
@@ -100,7 +100,7 @@ export default async function AuditPage({ searchParams }: { searchParams: Search
                   </td>
                   <td className="px-6 py-4 text-slate-700">{log.description}</td>
                   <td className="px-6 py-4 text-slate-600">
-                    {log.user?.name ?? log.user?.email ?? "—"}
+                    {log.user?.name ?? log.user?.email ?? "-"}
                   </td>
                 </tr>
               ))

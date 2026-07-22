@@ -42,7 +42,7 @@ export function getRunningTimer(userId: string): Promise<RunningTimer | null> {
 /**
  * Close any running timer for the user. `idleSeconds` (tracked by the desktop app)
  * is subtracted from the worked duration and recorded, while endTime stays the real
- * stop time — so `durationSeconds` is net work and the idle split is preserved.
+ * stop time - so `durationSeconds` is net work and the idle split is preserved.
  */
 export async function stopRunningTimer(userId: string, idleSeconds = 0) {
   const active = await prisma.timeLog.findFirst({

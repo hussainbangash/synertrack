@@ -156,15 +156,15 @@ async function main() {
 
   type LogSpec = { userId: string; projectId: string; taskId?: string; base: Date; addDays: number; hour: number; hours: number; notes?: string };
   const specs: LogSpec[] = [
-    // This week — user
+    // This week - user
     { userId: user.id, projectId: acme.id, taskId: heroTask.id, base: thisMonday, addDays: 0, hour: 9, hours: 2.5, notes: "Hero layout" },
     { userId: user.id, projectId: acme.id, taskId: blogTask.id, base: thisMonday, addDays: 1, hour: 10, hours: 3, notes: "Blog migration" },
     { userId: user.id, projectId: mobile.id, base: thisMonday, addDays: 2, hour: 13, hours: 4, notes: "Auth screens" },
     { userId: user.id, projectId: acme.id, taskId: heroTask.id, base: thisMonday, addDays: 3, hour: 9, hours: 2 },
-    // This week — manager
+    // This week - manager
     { userId: manager.id, projectId: internal.id, base: thisMonday, addDays: 0, hour: 14, hours: 1.5 },
     { userId: manager.id, projectId: acme.id, base: thisMonday, addDays: 1, hour: 11, hours: 2 },
-    // Previous week — user (feeds a submitted timesheet)
+    // Previous week - user (feeds a submitted timesheet)
     { userId: user.id, projectId: acme.id, base: prevMonday, addDays: 1, hour: 9, hours: 6, notes: "Component library" },
     { userId: user.id, projectId: mobile.id, base: prevMonday, addDays: 2, hour: 10, hours: 5, notes: "Onboarding flow" },
   ];

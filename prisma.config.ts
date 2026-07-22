@@ -3,7 +3,7 @@
 import "dotenv/config";
 import { defineConfig } from "prisma/config";
 
-// Migrations (and the CLI in general) should use a DIRECT database connection —
+// Migrations (and the CLI in general) should use a DIRECT database connection -
 // DDL and advisory locks don't behave well through a transaction pooler like
 // PgBouncer / Neon's `-pooler` endpoint. Runtime queries use DATABASE_URL (which
 // may be pooled) via the driver adapter in src/lib/prisma.ts; migrations prefer a

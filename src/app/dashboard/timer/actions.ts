@@ -57,7 +57,7 @@ export async function startTimer(_prev: ActionState, formData: FormData): Promis
     return fail("You're not a member of that project.");
   }
 
-  // Only one running timer at a time — starting a new one switches.
+  // Only one running timer at a time - starting a new one switches.
   await stopActiveTimer(user.id);
 
   await prisma.timeLog.create({

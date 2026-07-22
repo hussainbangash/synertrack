@@ -5,7 +5,7 @@ export const RESET_TOKEN_TTL_MS = 30 * 60 * 1000; // 30 minutes
 
 /**
  * Create a reset token pair: the raw token goes in the email link, and only its
- * SHA-256 hash is stored in the database — so a database leak can't be used to
+ * SHA-256 hash is stored in the database - so a database leak can't be used to
  * reset anyone's password.
  */
 export function generateResetToken(): { token: string; tokenHash: string } {

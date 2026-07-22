@@ -17,7 +17,7 @@ export type CurrentUser = {
  *
  * This is the single choke point for every protected page and server action, so
  * re-reading the user here means that a deleted account or a changed role takes
- * effect immediately — not only once the JWT expires.
+ * effect immediately - not only once the JWT expires.
  */
 export async function requireUser(): Promise<CurrentUser> {
   const session = await auth();

@@ -8,7 +8,7 @@ export function OPTIONS() {
   return apiPreflight();
 }
 
-// GET /api/desktop/timer — the caller's currently running timer, or null.
+// GET /api/desktop/timer - the caller's currently running timer, or null.
 // serverTime lets the client compute elapsed time from the shared clock, so the
 // desktop and web apps always show the same value.
 export async function GET(request: Request) {

@@ -1,5 +1,5 @@
 // Reads the latest Synertrack Desktop release from GitHub. Cached for an hour, so
-// when CI publishes a new release the site picks it up automatically — no redeploy.
+// when CI publishes a new release the site picks it up automatically - no redeploy.
 
 const REPO = "hussainbangash/synertrack-desktop";
 export const RELEASES_URL = `https://github.com/${REPO}/releases/latest`;

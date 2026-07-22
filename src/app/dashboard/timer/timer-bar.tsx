@@ -68,7 +68,7 @@ function StartTimer({ projects }: { projects: TimerProject[] }) {
   if (projects.length === 0) {
     return (
       <div className="rounded-xl border border-dashed border-slate-300 bg-white px-5 py-3 text-sm text-slate-500">
-        No projects to track yet — ask an admin to add you to one.
+        No projects to track yet - ask an admin to add you to one.
       </div>
     );
   }

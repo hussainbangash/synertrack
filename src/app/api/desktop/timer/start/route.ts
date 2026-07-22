@@ -15,7 +15,7 @@ const startSchema = z.object({
   notes: z.string().trim().max(500).optional().nullable(),
 });
 
-// POST /api/desktop/timer/start — start a timer (switching off any running one).
+// POST /api/desktop/timer/start - start a timer (switching off any running one).
 export async function POST(request: Request) {
   const auth = await requireApiUser(request);
   if (auth instanceof NextResponse) return auth;

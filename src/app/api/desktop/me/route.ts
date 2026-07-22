@@ -8,7 +8,7 @@ export function OPTIONS() {
   return apiPreflight();
 }
 
-// GET /api/desktop/me — the signed-in user plus the projects (and open tasks)
+// GET /api/desktop/me - the signed-in user plus the projects (and open tasks)
 // they can log time against. Used by the desktop app to populate its pickers.
 export async function GET(request: Request) {
   const auth = await requireApiUser(request);

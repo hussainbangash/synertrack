@@ -80,7 +80,7 @@ export default async function TimerPage() {
       <section>
         <h2 className="text-3xl font-bold text-slate-900">Timer</h2>
         <p className="mt-2 text-sm text-slate-600">
-          Start the timer in the bar above, or log time by hand — your entries show up here.
+          Start the timer in the bar above, or log time by hand - your entries show up here.
         </p>
       </section>
 
