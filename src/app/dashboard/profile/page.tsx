@@ -2,7 +2,7 @@ import { headers } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { requireUser, roleLabels } from "@/lib/permissions/roles";
 import { DesktopTokens } from "./desktop-tokens";
-import { DesktopDownload } from "./desktop-download";
+import { DesktopDownload } from "@/components/desktop-download";
 
 export default async function ProfilePage() {
   const sessionUser = await requireUser();

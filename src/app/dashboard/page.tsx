@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { prisma } from "@/lib/prisma";
 import { requireUser, roleLabels } from "@/lib/permissions/roles";
+import { DesktopDownload } from "@/components/desktop-download";
 import {
   ByProjectChart,
   HoursPerDayChart,
@@ -280,6 +281,8 @@ export default async function DashboardPage() {
           )}
         </section>
       ) : null}
+
+      <DesktopDownload compact />
     </div>
   );
 }
