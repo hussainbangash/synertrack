@@ -54,7 +54,7 @@ export async function DesktopDownload({ compact = false }: { compact?: boolean }
   }
 
   return (
-    <section className="rounded-2xl bg-white p-6 shadow-sm">
+    <section className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
       <h3 className="text-lg font-semibold text-slate-900">Get the desktop app</h3>
       <p className="mt-1 text-sm text-slate-600">
         A tray timer for Windows that syncs with your account - start/stop from the tray,

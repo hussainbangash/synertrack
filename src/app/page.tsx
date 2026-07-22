@@ -148,11 +148,11 @@ export default function LandingPage() {
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {STEPS.map((s) => (
-              <div key={s.n} className="rounded-2xl bg-white p-6 shadow-sm">
+              <div key={s.n} className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
                 <div className="grid h-10 w-10 place-items-center rounded-full bg-emerald-600 text-sm font-bold text-white">
                   {s.n}
                 </div>
-                <h3 className="mt-4 text-lg font-semibold">{s.title}</h3>
+                <h3 className="mt-4 text-lg font-semibold text-slate-900">{s.title}</h3>
                 <p className="mt-1 text-sm text-slate-600">{s.body}</p>
               </div>
             ))}
@@ -189,14 +189,14 @@ export default function LandingPage() {
             <DesktopDownload />
           </div>
           {/* Showcase with the always-on-top mini widget */}
-          <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-8 shadow-sm">
+          <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
             <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-emerald-200/40 blur-3xl" />
-            <p className="text-sm font-semibold text-emerald-600">Always in view</p>
-            <p className="mt-1 text-slate-600">
+            <h3 className="text-lg font-semibold text-slate-900">Always in view</h3>
+            <p className="mt-1 text-sm text-slate-600">
               A tiny always-on-top timer stays visible while you work, and idle time is
               automatically subtracted.
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-6 flex justify-center">
               <div className="floaty">
                 <MiniWidget />
               </div>
