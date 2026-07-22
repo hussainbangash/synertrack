@@ -69,7 +69,7 @@ export default function LandingPage() {
       {/* Header */}
       <header className="sticky top-0 z-20 border-b border-slate-100 bg-white/80 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <div className="flex items-center gap-2 font-bold">
+          <div className="font-display flex items-center gap-2 text-lg font-bold">
             <span className="h-3 w-3 rounded-full bg-emerald-500" />
             Synertrack
           </div>
@@ -99,11 +99,7 @@ export default function LandingPage() {
         <div className="pointer-events-none absolute -top-24 left-1/2 -z-10 h-72 w-[46rem] -translate-x-1/2 rounded-full bg-emerald-200/40 blur-3xl" />
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:py-24">
           <div className="fade-up">
-            <span className="inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs font-semibold text-emerald-700">
-              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-              Team time tracking
-            </span>
-            <h1 className="mt-5 text-4xl font-bold leading-[1.1] tracking-tight sm:text-5xl">
+            <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               Time tracking your team will{" "}
               <span className="text-emerald-600">actually use</span>
             </h1>
@@ -147,7 +143,7 @@ export default function LandingPage() {
       <section id="how" className="border-y border-slate-100 bg-slate-50">
         <div className="mx-auto max-w-6xl px-6 py-16">
           <div className="text-center">
-            <h2 className="text-3xl font-bold tracking-tight">How it works</h2>
+            <h2 className="font-display text-3xl font-bold tracking-tight">How it works</h2>
             <p className="mt-2 text-slate-600">From a running timer to an approved timesheet.</p>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -167,7 +163,7 @@ export default function LandingPage() {
       {/* Features */}
       <section id="features" className="mx-auto max-w-6xl px-6 py-16">
         <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight">Everything a team needs</h2>
+          <h2 className="font-display text-3xl font-bold tracking-tight">Everything a team needs</h2>
           <p className="mt-2 text-slate-600">Track time, review it, and see where it goes.</p>
         </div>
         <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -192,11 +188,11 @@ export default function LandingPage() {
           <div>
             <DesktopDownload />
           </div>
-          {/* Dark showcase with the always-on-top mini widget */}
-          <div className="relative overflow-hidden rounded-2xl bg-slate-900 p-8">
-            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-emerald-500/20 blur-3xl" />
-            <p className="text-sm font-semibold text-emerald-400">Always in view</p>
-            <p className="mt-1 text-slate-300">
+          {/* Showcase with the always-on-top mini widget */}
+          <div className="relative overflow-hidden rounded-2xl border border-slate-100 bg-white p-8 shadow-sm">
+            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-emerald-200/40 blur-3xl" />
+            <p className="text-sm font-semibold text-emerald-600">Always in view</p>
+            <p className="mt-1 text-slate-600">
               A tiny always-on-top timer stays visible while you work, and idle time is
               automatically subtracted.
             </p>
@@ -211,21 +207,23 @@ export default function LandingPage() {
 
       {/* Final CTA */}
       <section className="mx-auto max-w-6xl px-6 py-16">
-        <div className="rounded-3xl bg-slate-900 px-8 py-14 text-center">
-          <h2 className="text-3xl font-bold text-white sm:text-4xl">Start tracking in seconds</h2>
-          <p className="mx-auto mt-3 max-w-xl text-slate-300">
+        <div className="rounded-3xl border border-emerald-100 bg-emerald-50 px-8 py-14 text-center">
+          <h2 className="font-display text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+            Start tracking in seconds
+          </h2>
+          <p className="mx-auto mt-3 max-w-xl text-slate-600">
             Open the live demo with a one-click account, or grab the desktop app.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/login"
-              className="rounded-lg bg-emerald-500 px-5 py-3 text-sm font-semibold text-white transition hover:bg-emerald-400"
+              className="rounded-lg bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-slate-700"
             >
               Try the live demo →
             </Link>
             <a
               href="#desktop"
-              className="rounded-lg border border-slate-600 px-5 py-3 text-sm font-semibold text-slate-200 transition hover:bg-slate-800"
+              className="rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition hover:border-slate-400"
             >
               Get the desktop app
             </a>
