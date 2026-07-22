@@ -63,10 +63,13 @@ export function AppPreview() {
         {/* Mini chart */}
         <div className="rounded-xl bg-white p-4 shadow-sm">
           <p className="text-xs font-medium text-slate-500">Last 7 days</p>
-          <div className="mt-3 flex h-24 items-end justify-between gap-2">
+          <div className="mt-3 flex h-28 items-end justify-between gap-2">
             {BARS.map((h, i) => (
-              <div key={i} className="flex flex-1 flex-col items-center gap-1.5">
-                <div className="w-full rounded-t-md bg-slate-900/90" style={{ height: `${h}%` }} />
+              <div key={i} className="flex h-full flex-1 flex-col items-center justify-end gap-1.5">
+                <div
+                  className="w-full rounded-t-md bg-gradient-to-t from-slate-800 to-slate-600"
+                  style={{ height: `${h}%` }}
+                />
                 <span className="text-[10px] text-slate-400">{DAYS[i]}</span>
               </div>
             ))}
