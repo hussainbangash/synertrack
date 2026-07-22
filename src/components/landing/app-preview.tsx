@@ -6,7 +6,7 @@ const DAYS = ["M", "T", "W", "T", "F", "S", "S"];
 /** An inline, responsive mockup of the Synertrack dashboard (no image files). */
 export function AppPreview() {
   return (
-    <div className="w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-2xl shadow-emerald-900/10 ring-1 ring-slate-900/5">
+    <div className="w-full overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-[0_40px_80px_-24px_rgba(4,120,87,0.35)] ring-1 ring-slate-900/5">
       {/* Browser chrome */}
       <div className="flex items-center gap-2 border-b border-slate-100 bg-slate-50 px-4 py-3">
         <span className="h-3 w-3 rounded-full bg-red-400" />
