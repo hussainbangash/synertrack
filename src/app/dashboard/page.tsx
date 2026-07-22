@@ -38,6 +38,16 @@ function hours(seconds: number): number {
   return Math.round((seconds / 3600) * 100) / 100;
 }
 
+/** Human hours+minutes, e.g. "9h 40m", "20m", "2h". */
+function formatHm(seconds: number): string {
+  const totalMin = Math.round(seconds / 60);
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  if (h === 0) return `${m}m`;
+  if (m === 0) return `${h}h`;
+  return `${h}h ${m}m`;
+}
+
 export default async function DashboardPage() {
   const user = await requireUser();
   const canManage = user.role === "ADMIN" || user.role === "MANAGER";
@@ -61,11 +71,13 @@ export default async function DashboardPage() {
       startTime: true,
       endTime: true,
       durationSeconds: true,
+      idleSeconds: true,
       project: { select: { name: true, color: true } },
     },
   });
 
   let weekSeconds = 0;
+  let weekIdleSeconds = 0;
   let todaySeconds = 0;
   const perDay = new Map<number, number>();
   const perProject = new Map<string, { hours: number; color: string | null }>();
@@ -75,6 +87,7 @@ export default async function DashboardPage() {
     const started = log.startTime.getTime();
     if (started >= monday.getTime()) {
       weekSeconds += secs;
+      weekIdleSeconds += log.idleSeconds;
       const key = log.project.name;
       const cur = perProject.get(key) ?? { hours: 0, color: log.project.color };
       cur.hours += secs;
@@ -186,6 +199,9 @@ export default async function DashboardPage() {
           <p className="mt-2 text-xs text-slate-500">
             {targetPct}% of {targetHours}h target
           </p>
+          {weekIdleSeconds > 0 ? (
+            <p className="mt-1 text-xs text-amber-600">{formatHm(weekIdleSeconds)} idle removed</p>
+          ) : null}
         </div>
 
         <div className="rounded-2xl bg-white p-6 shadow-sm">

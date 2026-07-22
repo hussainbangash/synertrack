@@ -2,6 +2,7 @@ import { headers } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { requireUser, roleLabels } from "@/lib/permissions/roles";
 import { DesktopTokens } from "./desktop-tokens";
+import { DesktopDownload } from "./desktop-download";
 
 export default async function ProfilePage() {
   const sessionUser = await requireUser();
@@ -87,6 +88,8 @@ export default async function ProfilePage() {
           </div>
         </dl>
       </section>
+
+      <DesktopDownload />
 
       <DesktopTokens
         appUrl={appUrl}
