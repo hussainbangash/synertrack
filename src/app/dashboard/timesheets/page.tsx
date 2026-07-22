@@ -19,6 +19,16 @@ function formatWeek(start: Date): string {
   return `${start.toLocaleDateString("en-US", opts)} – ${end.toLocaleDateString("en-US", opts)}`;
 }
 
+/** Human hours+minutes, e.g. "9h 40m", "20m", "2h". */
+function formatHm(seconds: number): string {
+  const totalMin = Math.round(seconds / 60);
+  const h = Math.floor(totalMin / 60);
+  const m = totalMin % 60;
+  if (h === 0) return `${m}m`;
+  if (m === 0) return `${h}h`;
+  return `${h}h ${m}m`;
+}
+
 function StatusBadge({ status }: { status: string }) {
   const styles: Record<string, string> = {
     SUBMITTED: "bg-amber-100 text-amber-700",
@@ -48,7 +58,7 @@ export default async function TimesheetsPage() {
   const [logs, timesheets, pending] = await Promise.all([
     prisma.timeLog.findMany({
       where: { userId: user.id, endTime: { not: null }, startTime: { gte: earliest } },
-      select: { startTime: true, endTime: true, durationSeconds: true },
+      select: { startTime: true, endTime: true, durationSeconds: true, idleSeconds: true },
     }),
     prisma.timesheet.findMany({
       where: { userId: user.id, periodStart: { gte: earliest } },
@@ -70,16 +80,31 @@ export default async function TimesheetsPage() {
 
   const tsByStart = new Map(timesheets.map((t) => [t.periodStart.getTime(), t]));
 
-  function hoursForWeek(start: Date): number {
+  // Idle time per pending timesheet, so the approver sees the worked/idle split.
+  const pendingIdle =
+    canManage && pending.length > 0
+      ? await prisma.timeLog.groupBy({
+          by: ["timesheetId"],
+          where: { timesheetId: { in: pending.map((p) => p.id) } },
+          _sum: { idleSeconds: true },
+        })
+      : [];
+  const idleByTimesheet = new Map(pendingIdle.map((g) => [g.timesheetId, g._sum.idleSeconds ?? 0]));
+
+  function totalsForWeek(start: Date): { workedSecs: number; idleSecs: number } {
     const end = new Date(start.getTime() + WEEK_MS);
-    const secs = logs
+    return logs
       .filter((l) => l.startTime >= start && l.startTime < end)
       .reduce(
-        (s, l) =>
-          s + (l.durationSeconds ?? Math.max(0, Math.round(((l.endTime?.getTime() ?? 0) - l.startTime.getTime()) / 1000))),
-        0
+        (acc, l) => {
+          acc.workedSecs +=
+            l.durationSeconds ??
+            Math.max(0, Math.round(((l.endTime?.getTime() ?? 0) - l.startTime.getTime()) / 1000));
+          acc.idleSecs += l.idleSeconds;
+          return acc;
+        },
+        { workedSecs: 0, idleSecs: 0 }
       );
-    return Math.round((secs / 3600) * 100) / 100;
   }
 
   return (
@@ -102,7 +127,10 @@ export default async function TimesheetsPage() {
                   <div>
                     <p className="font-medium text-slate-900">{t.user.name ?? t.user.email}</p>
                     <p className="text-xs text-slate-500">
-                      {formatWeek(t.periodStart)} · {t.totalHours}h
+                      {formatWeek(t.periodStart)} · {t.totalHours}h worked
+                      {(idleByTimesheet.get(t.id) ?? 0) > 0
+                        ? ` · ${formatHm(idleByTimesheet.get(t.id) ?? 0)} idle`
+                        : ""}
                     </p>
                   </div>
                   <div className="flex items-center gap-3">
@@ -123,15 +151,27 @@ export default async function TimesheetsPage() {
         </div>
         <ul className="divide-y divide-slate-100">
           {weeks.map((start) => {
-            const hours = hoursForWeek(start);
+            const { workedSecs, idleSecs } = totalsForWeek(start);
             const ts = tsByStart.get(start.getTime());
             const status = ts?.status;
-            const displayHours = status === "APPROVED" || status === "SUBMITTED" ? ts!.totalHours : hours;
+            const workedDisplaySecs =
+              status === "APPROVED" || status === "SUBMITTED"
+                ? Math.round(ts!.totalHours * 3600)
+                : workedSecs;
             return (
               <li key={start.toISOString()} className="flex flex-wrap items-center justify-between gap-3 px-6 py-4">
                 <div>
                   <p className="font-medium text-slate-900">{formatWeek(start)}</p>
-                  <p className="text-xs text-slate-500">{displayHours}h logged</p>
+                  {workedDisplaySecs > 0 || idleSecs > 0 ? (
+                    <p className="text-xs text-slate-500">
+                      {formatHm(workedDisplaySecs)} worked
+                      {idleSecs > 0 ? (
+                        <span className="text-amber-600"> · {formatHm(idleSecs)} idle</span>
+                      ) : null}
+                    </p>
+                  ) : (
+                    <p className="text-xs text-slate-400">No time logged</p>
+                  )}
                   {status === "REJECTED" && ts?.rejectionReason ? (
                     <p className="mt-1 text-xs text-red-600">Rejected: {ts.rejectionReason}</p>
                   ) : null}
@@ -139,7 +179,7 @@ export default async function TimesheetsPage() {
                 <div>
                   {status === "SUBMITTED" || status === "APPROVED" ? (
                     <StatusBadge status={status} />
-                  ) : hours > 0 ? (
+                  ) : workedSecs > 0 ? (
                     <SubmitButton
                       periodStart={start.toISOString()}
                       label={status === "REJECTED" ? "Resubmit" : "Submit"}
