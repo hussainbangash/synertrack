@@ -1,21 +1,28 @@
+import { headers } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { requireUser, roleLabels } from "@/lib/permissions/roles";
+import { DesktopTokens } from "./desktop-tokens";
 
 export default async function ProfilePage() {
   const sessionUser = await requireUser();
 
-  const user = await prisma.user.findUnique({
-    where: {
-      id: sessionUser.id,
-    },
-    select: {
-      name: true,
-      email: true,
-      role: true,
-      createdAt: true,
-      updatedAt: true,
-    },
-  });
+  const [user, tokens, headerList] = await Promise.all([
+    prisma.user.findUnique({
+      where: { id: sessionUser.id },
+      select: { name: true, email: true, role: true, createdAt: true, updatedAt: true },
+    }),
+    prisma.apiToken.findMany({
+      where: { userId: sessionUser.id },
+      orderBy: { createdAt: "desc" },
+      select: { id: true, name: true, lastUsedAt: true, createdAt: true },
+    }),
+    headers(),
+  ]);
+
+  const envUrl = process.env.AUTH_URL ?? process.env.NEXTAUTH_URL;
+  const appUrl =
+    envUrl ??
+    (headerList.get("host") ? `https://${headerList.get("host")}` : "http://localhost:3000");
 
   if (!user) {
     return (
@@ -80,6 +87,16 @@ export default async function ProfilePage() {
           </div>
         </dl>
       </section>
+
+      <DesktopTokens
+        appUrl={appUrl}
+        tokens={tokens.map((t) => ({
+          id: t.id,
+          name: t.name,
+          lastUsedAt: t.lastUsedAt ? t.lastUsedAt.toISOString() : null,
+          createdAt: t.createdAt.toISOString(),
+        }))}
+      />
     </div>
   );
 }

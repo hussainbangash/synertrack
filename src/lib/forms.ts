@@ -7,3 +7,7 @@ export type ActionState = {
 };
 
 export const initialActionState: ActionState = { status: "idle" };
+
+// Token creation returns the plaintext token exactly once, alongside the state.
+export type DesktopTokenState = ActionState & { token?: string };
+export const initialDesktopTokenState: DesktopTokenState = { status: "idle" };

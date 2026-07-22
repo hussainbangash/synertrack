@@ -78,6 +78,7 @@ model User {
   activityLogs        ActivityLog[]
   reports             Report[]             @relation("ReportCreator")
   passwordResetTokens PasswordResetToken[]
+  apiTokens           ApiToken[]
 
   // Synertrack relations
   projectsCreated    Project[]         @relation("ProjectCreator")
@@ -96,6 +97,21 @@ model PasswordResetToken {
   expiresAt DateTime
   usedAt    DateTime?
   createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// Personal access tokens for non-browser clients (the Synertrack desktop app).
+// Only the SHA-256 hash of the token is stored; the plaintext is shown once.
+model ApiToken {
+  id         String    @id @default(cuid())
+  userId     String
+  name       String
+  tokenHash  String    @unique
+  lastUsedAt DateTime?
+  createdAt  DateTime  @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
