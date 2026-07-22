@@ -26,6 +26,9 @@ password `password123`).
 - **Reports** *(manager/admin)* — this month's team hours by project and by member.
 - **Auth & RBAC** — credentials + Google OAuth, JWT sessions re-checked against the DB
   on every request, and role gates enforced on the server (not just the UI).
+- **Desktop companion** — a lightweight Electron tray timer
+  ([synertrack-desktop](https://github.com/hussainbangash/synertrack-desktop)) that starts/stops
+  from the system tray and syncs to the same account over a token-authenticated API.
 
 ## Roles
 
