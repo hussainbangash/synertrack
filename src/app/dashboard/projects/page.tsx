@@ -35,7 +35,7 @@ export default async function ProjectsPage() {
       {canManage ? <ProjectForm /> : null}
 
       {projects.length === 0 ? (
-        <p className="rounded-2xl bg-white p-8 text-center text-sm text-slate-500 shadow-sm">
+        <p className="rounded-2xl border border-slate-100 bg-white p-8 text-center text-sm text-slate-500 shadow-sm">
           No projects yet.{canManage ? " Create one above." : ""}
         </p>
       ) : (
@@ -44,7 +44,7 @@ export default async function ProjectsPage() {
             <Link
               key={project.id}
               href={`/dashboard/projects/${project.id}`}
-              className="rounded-2xl bg-white p-5 shadow-sm transition hover:shadow-md"
+              className="rounded-2xl border border-slate-100 bg-white p-5 shadow-sm transition hover:shadow-md"
             >
               <div className="flex items-center gap-2">
                 <span

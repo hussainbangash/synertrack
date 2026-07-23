@@ -45,7 +45,7 @@ export function DesktopTokens({ tokens, appUrl }: { tokens: TokenRow[]; appUrl: 
   const [, revokeAction, revoking] = useActionState(revokeDesktopToken, initialDesktopTokenState);
 
   return (
-    <section className="rounded-2xl bg-white p-6 shadow-sm">
+    <section className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
           <h3 className="text-lg font-semibold text-slate-900">Desktop app access</h3>

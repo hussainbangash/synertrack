@@ -61,12 +61,13 @@ export default async function DashboardLayout({
       <div className="grid min-h-screen lg:grid-cols-[260px_1fr]">
         <aside className="border-r border-slate-200 bg-white">
           <div className="border-b border-slate-200 px-6 py-5">
-            <p className="text-sm font-medium text-slate-500">
+            <div className="font-display flex items-center gap-2 text-lg font-bold text-slate-900">
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
               Synertrack
-            </p>
-            <h1 className="mt-1 text-xl font-bold text-slate-900">
+            </div>
+            <p className="mt-1 text-xs font-medium uppercase tracking-wide text-slate-400">
               Time &amp; Productivity
-            </h1>
+            </p>
           </div>
 
           <nav className="space-y-1 px-4 py-5">

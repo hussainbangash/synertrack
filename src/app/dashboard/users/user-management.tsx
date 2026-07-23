@@ -209,7 +209,7 @@ export function UserManagement({
         </p>
       </section>
 
-      <section className="rounded-2xl bg-white p-6 shadow-sm">
+      <section className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
         <div>
           <h3 className="text-lg font-semibold text-slate-900">Add user</h3>
           <p className="mt-1 text-sm text-slate-500">
@@ -219,7 +219,7 @@ export function UserManagement({
         <AddUserForm />
       </section>
 
-      <section className="overflow-hidden rounded-2xl bg-white shadow-sm">
+      <section className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
         <table className="w-full border-collapse text-left text-sm">
           <thead className="bg-slate-50 text-slate-600">
             <tr>

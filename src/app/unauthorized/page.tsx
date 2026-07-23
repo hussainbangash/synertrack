@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function UnauthorizedPage() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-100 px-4">
-      <section className="w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-lg">
+      <section className="w-full max-w-md rounded-2xl border border-slate-100 bg-white p-8 text-center shadow-lg">
         <p className="text-sm font-semibold uppercase tracking-wide text-red-600">
           Access denied
         </p>

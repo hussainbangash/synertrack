@@ -188,7 +188,7 @@ export default async function DashboardPage() {
 
       {/* Personal stat cards */}
       <section className="grid gap-4 sm:grid-cols-3">
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <p className="text-sm font-medium text-slate-500">This week</p>
           <p className="mt-3 text-3xl font-bold text-slate-900">{weekHours}h</p>
           <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-slate-100">
@@ -205,13 +205,13 @@ export default async function DashboardPage() {
           ) : null}
         </div>
 
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <p className="text-sm font-medium text-slate-500">Today</p>
           <p className="mt-3 text-3xl font-bold text-slate-900">{hours(todaySeconds)}h</p>
           <p className="mt-2 text-xs text-slate-500">Logged since midnight</p>
         </div>
 
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <p className="text-sm font-medium text-slate-500">Active projects</p>
           <p className="mt-3 text-3xl font-bold text-slate-900">{projectData.length}</p>
           <p className="mt-2 text-xs text-slate-500">Worked on this week</p>
@@ -220,7 +220,7 @@ export default async function DashboardPage() {
 
       {/* Charts */}
       <section className="grid gap-6 lg:grid-cols-[1.3fr_0.7fr]">
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <h3 className="text-lg font-semibold text-slate-900">Last 7 days</h3>
           <p className="mt-1 text-sm text-slate-500">Hours logged per day.</p>
           <div className="mt-4">
@@ -228,7 +228,7 @@ export default async function DashboardPage() {
           </div>
         </div>
 
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <h3 className="text-lg font-semibold text-slate-900">This week by project</h3>
           <p className="mt-1 text-sm text-slate-500">Where your time went.</p>
           <div className="mt-4">
@@ -239,7 +239,7 @@ export default async function DashboardPage() {
 
       {/* Manager team view */}
       {canManage ? (
-        <section className="rounded-2xl bg-white p-6 shadow-sm">
+        <section className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <div className="flex items-center justify-between">
             <div>
               <h3 className="text-lg font-semibold text-slate-900">Team this week</h3>

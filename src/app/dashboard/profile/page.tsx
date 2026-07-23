@@ -27,7 +27,7 @@ export default async function ProfilePage() {
 
   if (!user) {
     return (
-      <div className="rounded-2xl bg-white p-6 shadow-sm">
+      <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
         <h2 className="text-xl font-bold text-slate-900">
           Profile not found
         </h2>
@@ -49,7 +49,7 @@ export default async function ProfilePage() {
         </p>
       </section>
 
-      <section className="rounded-2xl bg-white p-6 shadow-sm">
+      <section className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
         <dl className="grid gap-5 md:grid-cols-2">
           <div>
             <dt className="text-sm font-medium text-slate-500">

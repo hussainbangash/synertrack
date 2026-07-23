@@ -89,12 +89,12 @@ export default async function TimerPage() {
       <section className="space-y-6">
         <h3 className="text-lg font-semibold text-slate-900">Recent entries</h3>
         {groups.size === 0 ? (
-          <p className="rounded-2xl bg-white p-8 text-center text-sm text-slate-500 shadow-sm">
+          <p className="rounded-2xl border border-slate-100 bg-white p-8 text-center text-sm text-slate-500 shadow-sm">
             No time logged yet.
           </p>
         ) : (
           [...groups.values()].map((group) => (
-            <div key={group.label} className="overflow-hidden rounded-2xl bg-white shadow-sm">
+            <div key={group.label} className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
               <div className="flex items-center justify-between border-b border-slate-100 px-6 py-3">
                 <span className="text-sm font-semibold text-slate-900">{group.label}</span>
                 <span className="text-sm font-medium text-slate-500">

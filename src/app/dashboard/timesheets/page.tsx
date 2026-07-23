@@ -116,7 +116,7 @@ export default async function TimesheetsPage() {
 
       {/* Manager approval queue */}
       {canManage ? (
-        <section className="rounded-2xl bg-white p-6 shadow-sm">
+        <section className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <h3 className="text-lg font-semibold text-slate-900">Pending approval</h3>
           {pending.length === 0 ? (
             <p className="mt-3 text-sm text-slate-500">Nothing waiting on you.</p>
@@ -145,7 +145,7 @@ export default async function TimesheetsPage() {
       ) : null}
 
       {/* My weeks */}
-      <section className="overflow-hidden rounded-2xl bg-white shadow-sm">
+      <section className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
         <div className="border-b border-slate-100 px-6 py-3">
           <h3 className="text-lg font-semibold text-slate-900">My weeks</h3>
         </div>

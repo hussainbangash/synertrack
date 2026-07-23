@@ -70,7 +70,7 @@ export default async function AuditPage({ searchParams }: { searchParams: Search
         ))}
       </div>
 
-      <section className="overflow-hidden rounded-2xl bg-white shadow-sm">
+      <section className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
         <table className="w-full border-collapse text-left text-sm">
           <thead className="bg-slate-50 text-slate-600">
             <tr>

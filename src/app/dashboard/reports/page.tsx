@@ -71,22 +71,22 @@ export default async function ReportsPage() {
       </section>
 
       <section className="grid gap-4 sm:grid-cols-3">
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <p className="text-sm font-medium text-slate-500">Total hours</p>
           <p className="mt-3 text-3xl font-bold text-slate-900">{totalHours}h</p>
         </div>
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <p className="text-sm font-medium text-slate-500">Projects</p>
           <p className="mt-3 text-3xl font-bold text-slate-900">{projectRows.length}</p>
         </div>
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <p className="text-sm font-medium text-slate-500">People tracking</p>
           <p className="mt-3 text-3xl font-bold text-slate-900">{memberRows.length}</p>
         </div>
       </section>
 
       <section className="grid gap-6 lg:grid-cols-2">
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <h3 className="text-lg font-semibold text-slate-900">By project</h3>
           {projectRows.length === 0 ? (
             <p className="mt-3 text-sm text-slate-500">No time tracked this month.</p>
@@ -113,7 +113,7 @@ export default async function ReportsPage() {
           )}
         </div>
 
-        <div className="rounded-2xl bg-white p-6 shadow-sm">
+        <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
           <h3 className="text-lg font-semibold text-slate-900">By team member</h3>
           {memberRows.length === 0 ? (
             <p className="mt-3 text-sm text-slate-500">No time tracked this month.</p>

@@ -73,7 +73,7 @@ export default async function ProjectDetailPage({
         ) : null}
       </section>
 
-      <section className="rounded-2xl bg-white p-6 shadow-sm">
+      <section className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-semibold text-slate-900">Tasks</h3>
           <span className="text-sm text-slate-500">{project.tasks.length} total</span>
@@ -108,7 +108,7 @@ export default async function ProjectDetailPage({
         </ul>
       </section>
 
-      <section className="rounded-2xl bg-white p-6 shadow-sm">
+      <section className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
         <h3 className="text-lg font-semibold text-slate-900">Members</h3>
         <ul className="mt-4 space-y-2 text-sm">
           {project.members.map((m) => (

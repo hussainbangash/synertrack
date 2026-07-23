@@ -13,7 +13,7 @@ export function ForgotPasswordForm() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-slate-100 px-4">
-      <section className="w-full max-w-md rounded-2xl bg-white p-8 shadow-lg">
+      <section className="w-full max-w-md rounded-2xl border border-slate-100 bg-white p-8 shadow-lg">
         <div className="mb-8">
           <p className="text-sm font-medium text-slate-500">Synertrack</p>
           <h1 className="mt-2 text-3xl font-bold text-slate-900">Forgot password</h1>
