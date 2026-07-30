@@ -95,7 +95,7 @@ export default async function TimerPage() {
         ) : (
           [...groups.values()].map((group) => (
             <div key={group.label} className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-              <div className="flex items-center justify-between border-b border-slate-100 px-6 py-3">
+              <div className="flex items-center justify-between border-b border-slate-100 px-4 py-3 sm:px-6">
                 <span className="text-sm font-semibold text-slate-900">{group.label}</span>
                 <span className="text-sm font-medium text-slate-500">
                   {formatDuration(group.totalSeconds)}
@@ -103,7 +103,7 @@ export default async function TimerPage() {
               </div>
               <ul className="divide-y divide-slate-100">
                 {group.entries.map((entry) => (
-                  <li key={entry.id} className="flex items-center gap-4 px-6 py-3">
+                  <li key={entry.id} className="flex items-center gap-4 px-4 py-3 sm:px-6">
                     <span
                       className="h-2.5 w-2.5 shrink-0 rounded-full"
                       style={{ backgroundColor: entry.project.color ?? "#94a3b8" }}

@@ -20,18 +20,20 @@ export function AppPreview() {
       {/* Dashboard body */}
       <div className="space-y-4 bg-slate-50 p-4 sm:p-5">
         {/* Running timer */}
-        <div className="flex items-center justify-between gap-3 rounded-xl bg-white p-4 shadow-sm">
-          <div className="flex items-center gap-3">
-            <span className="relative flex h-3 w-3">
+        {/* min-w-0 + truncate let this row shrink on narrow phones; without it the
+            project name and timer force the whole hero grid wider than the screen. */}
+        <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-white p-4 shadow-sm">
+          <div className="flex min-w-0 flex-1 items-center gap-3">
+            <span className="relative flex h-3 w-3 shrink-0">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-70" />
               <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
             </span>
-            <div>
-              <p className="text-sm font-semibold text-slate-900">Acme Website Redesign</p>
-              <p className="text-xs text-slate-500">Design homepage hero</p>
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold text-slate-900">Acme Website Redesign</p>
+              <p className="truncate text-xs text-slate-500">Design homepage hero</p>
             </div>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex shrink-0 items-center gap-3">
             <LiveTimer className="text-2xl font-bold tracking-tight text-slate-900" />
             <span className="rounded-lg bg-red-500 px-3 py-1.5 text-xs font-semibold text-white">
               Stop

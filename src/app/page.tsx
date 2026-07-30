@@ -2,6 +2,7 @@ import Link from "next/link";
 import { DesktopDownload } from "@/components/desktop-download";
 import { AppPreview } from "@/components/landing/app-preview";
 import { MiniWidget } from "@/components/landing/mini-widget";
+import { LandingNav } from "@/components/landing/landing-nav";
 
 const WEB_REPO = "https://github.com/hussainbangash/synertrack";
 const DESKTOP_REPO = "https://github.com/hussainbangash/synertrack-desktop";
@@ -68,28 +69,12 @@ export default function LandingPage() {
     <div className="min-h-screen bg-white text-slate-900">
       {/* Header */}
       <header className="sticky top-0 z-20 border-b border-slate-100 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
           <div className="font-display flex items-center gap-2 text-lg font-bold">
             <span className="h-3 w-3 rounded-full bg-emerald-500" />
             Synertrack
           </div>
-          <nav className="flex items-center gap-5 text-sm">
-            <a href="#features" className="hidden text-slate-600 hover:text-slate-900 sm:inline">
-              Features
-            </a>
-            <a href="#how" className="hidden text-slate-600 hover:text-slate-900 sm:inline">
-              How it works
-            </a>
-            <a href="#desktop" className="hidden text-slate-600 hover:text-slate-900 sm:inline">
-              Desktop app
-            </a>
-            <Link
-              href="/login"
-              className="rounded-lg bg-slate-900 px-4 py-2 font-semibold text-white transition hover:bg-slate-700"
-            >
-              Sign in
-            </Link>
-          </nav>
+          <LandingNav />
         </div>
       </header>
 
@@ -101,8 +86,10 @@ export default function LandingPage() {
         <div className="pointer-events-none absolute inset-0 -z-10 bg-dot-grid" />
         <div className="pointer-events-none absolute -top-24 left-[8%] -z-10 h-80 w-80 rounded-full bg-emerald-300/50 blur-3xl" />
         <div className="pointer-events-none absolute -top-10 right-[6%] -z-10 h-80 w-[32rem] rounded-full bg-teal-300/45 blur-3xl" />
+        {/* min-w-0 on the columns stops a wide child from pushing the grid track
+            past the viewport (grid items default to min-width:auto). */}
         <div className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-16 lg:grid-cols-2 lg:py-24">
-          <div className="fade-up">
+          <div className="fade-up min-w-0">
             <h1 className="font-display text-4xl font-bold leading-[1.05] tracking-tight sm:text-6xl">
               Time tracking your team will{" "}
               <span className="text-gradient">actually use</span>
@@ -130,7 +117,7 @@ export default function LandingPage() {
             </p>
           </div>
 
-          <div className="fade-up floaty" style={{ animationDelay: "0.15s" }}>
+          <div className="fade-up floaty min-w-0" style={{ animationDelay: "0.15s" }}>
             <AppPreview />
           </div>
         </div>

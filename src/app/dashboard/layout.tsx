@@ -7,7 +7,8 @@ import {
 } from "@/lib/permissions/roles";
 import { prisma } from "@/lib/prisma";
 import { TimerBar } from "./timer/timer-bar";
-import Link from "next/link";
+import { MobileNav } from "./mobile-nav";
+import { NavLinks } from "./nav-links";
 
 export default async function DashboardLayout({
   children,
@@ -59,7 +60,8 @@ export default async function DashboardLayout({
   return (
     <div className="min-h-screen bg-slate-100">
       <div className="grid min-h-screen lg:grid-cols-[260px_1fr]">
-        <aside className="border-r border-slate-200 bg-white">
+        {/* Permanent sidebar from `lg` up; below that it lives in MobileNav's drawer. */}
+        <aside className="hidden border-r border-slate-200 bg-white lg:block">
           <div className="border-b border-slate-200 px-6 py-5">
             <div className="font-display flex items-center gap-2 text-lg font-bold text-slate-900">
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
@@ -70,33 +72,28 @@ export default async function DashboardLayout({
             </p>
           </div>
 
-          <nav className="space-y-1 px-4 py-5">
-            {visibleRoutes.map((route) => (
-              <Link
-                key={route.href}
-                href={route.href}
-                className="block rounded-lg px-3 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100 hover:text-slate-950"
-              >
-                {route.label}
-              </Link>
-            ))}
-          </nav>
+          <NavLinks routes={visibleRoutes} />
         </aside>
 
-        <div>
+        {/* min-w-0 stops wide children (tables, charts) from forcing the grid wider. */}
+        <div className="min-w-0">
           <header className="border-b border-slate-200 bg-white">
-            <div className="flex items-center justify-between px-6 py-4">
-              <div>
-                <p className="text-sm font-medium text-slate-500">
-                  Signed in as
-                </p>
-                <h2 className="text-lg font-bold text-slate-900">
-                  {user.name}
-                </h2>
+            <div className="flex items-center justify-between gap-3 px-4 py-4 sm:px-6">
+              <div className="flex min-w-0 items-center gap-3">
+                <MobileNav routes={visibleRoutes} />
+                <div className="min-w-0">
+                  <p className="text-xs font-medium text-slate-500 sm:text-sm">
+                    Signed in as
+                  </p>
+                  <h2 className="truncate text-base font-bold text-slate-900 sm:text-lg">
+                    {user.name}
+                  </h2>
+                </div>
               </div>
 
-              <div className="flex items-center gap-4">
-                <div className="text-right">
+              <div className="flex shrink-0 items-center gap-4">
+                {/* Email is long, so it only appears once there is room for it. */}
+                <div className="hidden text-right md:block">
                   <p className="text-sm font-medium text-slate-900">
                     {user.email}
                   </p>
@@ -124,10 +121,10 @@ export default async function DashboardLayout({
             </div>
           </header>
 
-          <div className="px-6 pt-6">
+          <div className="px-4 pt-6 sm:px-6">
             <TimerBar active={activeTimer} projects={timerProjects} />
           </div>
-          <main className="px-6 py-6">{children}</main>
+          <main className="px-4 py-6 sm:px-6">{children}</main>
         </div>
       </div>
     </div>

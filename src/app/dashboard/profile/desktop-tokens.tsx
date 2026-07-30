@@ -53,17 +53,17 @@ export function DesktopTokens({ tokens, appUrl }: { tokens: TokenRow[]; appUrl: 
             Create a token to sign in to the Synertrack desktop app. Treat it like a password.
           </p>
         </div>
-        <form action={formAction} className="flex items-center gap-2">
+        <form action={formAction} className="flex w-full flex-wrap items-center gap-2 sm:w-auto">
           <input
             name="name"
             type="text"
             placeholder="Token name (e.g. My laptop)"
-            className="w-48 rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-950 outline-none focus:border-slate-900"
+            className="min-w-0 flex-1 rounded-lg border border-slate-300 px-3 py-2 text-sm text-slate-950 outline-none focus:border-slate-900 sm:w-48 sm:flex-none"
           />
           <button
             type="submit"
             disabled={pending}
-            className="rounded-lg bg-slate-900 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-700 disabled:opacity-50"
+            className="shrink-0 rounded-lg bg-slate-900 px-3 py-2 text-sm font-semibold text-white hover:bg-slate-700 disabled:opacity-50"
           >
             {pending ? "Creating…" : "Create token"}
           </button>

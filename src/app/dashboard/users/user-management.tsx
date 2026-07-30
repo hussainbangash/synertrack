@@ -220,7 +220,9 @@ export function UserManagement({
       </section>
 
       <section className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-        <table className="w-full border-collapse text-left text-sm">
+        {/* Scrolls sideways on narrow screens instead of stretching the page. */}
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[48rem] border-collapse text-left text-sm">
           <thead className="bg-slate-50 text-slate-600">
             <tr>
               <th className="px-6 py-4 font-semibold">Name</th>
@@ -240,6 +242,7 @@ export function UserManagement({
             ))}
           </tbody>
         </table>
+        </div>
       </section>
     </div>
   );

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Manrope } from "next/font/google";
 import "./globals.css";
 
@@ -18,6 +18,13 @@ export const metadata: Metadata = {
   title: "Synertrack",
   description:
     "Team time tracking with projects, live timers, timesheets, and manager approvals.",
+};
+
+// Explicit so mobile browsers lay the app out at device width rather than
+// zooming out a desktop-width page.
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

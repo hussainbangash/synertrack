@@ -71,7 +71,9 @@ export default async function AuditPage({ searchParams }: { searchParams: Search
       </div>
 
       <section className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-        <table className="w-full border-collapse text-left text-sm">
+        {/* Scrolls sideways on narrow screens instead of stretching the page. */}
+        <div className="overflow-x-auto">
+        <table className="w-full min-w-[44rem] border-collapse text-left text-sm">
           <thead className="bg-slate-50 text-slate-600">
             <tr>
               <th className="px-6 py-4 font-semibold">When</th>
@@ -107,6 +109,7 @@ export default async function AuditPage({ searchParams }: { searchParams: Search
             )}
           </tbody>
         </table>
+        </div>
       </section>
 
       {/* Pagination */}

@@ -133,7 +133,8 @@ export default async function TimesheetsPage() {
                         : ""}
                     </p>
                   </div>
-                  <div className="flex items-center gap-3">
+                  {/* Wraps on narrow screens so the reject reason + buttons stay reachable. */}
+                  <div className="flex w-full flex-wrap items-center gap-3 sm:w-auto">
                     <RejectForm timesheetId={t.id} />
                     <ApproveButton timesheetId={t.id} />
                   </div>
@@ -146,7 +147,7 @@ export default async function TimesheetsPage() {
 
       {/* My weeks */}
       <section className="overflow-hidden rounded-2xl border border-slate-100 bg-white shadow-sm">
-        <div className="border-b border-slate-100 px-6 py-3">
+        <div className="border-b border-slate-100 px-4 py-3 sm:px-6">
           <h3 className="text-lg font-semibold text-slate-900">My weeks</h3>
         </div>
         <ul className="divide-y divide-slate-100">
@@ -159,7 +160,7 @@ export default async function TimesheetsPage() {
                 ? Math.round(ts!.totalHours * 3600)
                 : workedSecs;
             return (
-              <li key={start.toISOString()} className="flex flex-wrap items-center justify-between gap-3 px-6 py-4">
+              <li key={start.toISOString()} className="flex flex-wrap items-center justify-between gap-3 px-4 py-4 sm:px-6">
                 <div>
                   <p className="font-medium text-slate-900">{formatWeek(start)}</p>
                   {workedDisplaySecs > 0 || idleSecs > 0 ? (

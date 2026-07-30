@@ -42,18 +42,18 @@ export function ApproveButton({ timesheetId }: { timesheetId: string }) {
 export function RejectForm({ timesheetId }: { timesheetId: string }) {
   const [state, formAction, pending] = useActionState(rejectTimesheet, initialActionState);
   return (
-    <form action={formAction} className="flex items-center gap-2">
+    <form action={formAction} className="flex min-w-0 flex-1 flex-wrap items-center gap-2 sm:flex-none">
       <input type="hidden" name="timesheetId" value={timesheetId} />
       <input
         name="reason"
         type="text"
         placeholder="Reason to reject…"
-        className="w-40 rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-950 outline-none focus:border-slate-900"
+        className="min-w-0 flex-1 rounded-lg border border-slate-300 bg-white px-2 py-1.5 text-sm text-slate-950 outline-none focus:border-slate-900 sm:w-40 sm:flex-none"
       />
       <button
         type="submit"
         disabled={pending}
-        className="rounded-lg border border-red-200 px-3 py-1.5 text-sm font-semibold text-red-700 transition hover:bg-red-50 disabled:opacity-50"
+        className="shrink-0 rounded-lg border border-red-200 px-3 py-1.5 text-sm font-semibold text-red-700 transition hover:bg-red-50 disabled:opacity-50"
       >
         {pending ? "…" : "Reject"}
       </button>
