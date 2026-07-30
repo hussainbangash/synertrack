@@ -1,6 +1,8 @@
 import { prisma } from "@/lib/prisma";
 import { requireUser } from "@/lib/permissions/roles";
 import { SubmitButton, ApproveButton, RejectForm } from "./timesheet-controls";
+import { WeeklySummary } from "./weekly-summary";
+import { isAiSummaryEnabled } from "@/lib/ai/weekly-summary";
 
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
 
@@ -113,6 +115,11 @@ export default async function TimesheetsPage() {
         <h2 className="text-3xl font-bold text-slate-900">Timesheets</h2>
         <p className="mt-2 text-sm text-slate-600">Submit your week for approval and track its status.</p>
       </section>
+
+      {/* Optional: only rendered when ANTHROPIC_API_KEY is configured. */}
+      {isAiSummaryEnabled() ? (
+        <WeeklySummary periodStartISO={currentStart.toISOString()} />
+      ) : null}
 
       {/* Manager approval queue */}
       {canManage ? (
